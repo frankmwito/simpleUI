@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -33,6 +34,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
@@ -54,31 +59,34 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-Column(
-  horizontalAlignment = Alignment.End,
-  verticalArrangement = Arrangement.Center,
-  modifier = Modifier
-    .size(400.dp)
-){
-  Text(
-  text = "Hello $name!",
-  color = Color.Blue,
-  fontSize = 8.sp,
+  Box{
+    Image(
+      painter = painterResource(id = R.drawable.frankie),
+      contentDescription =("Background image"),
+    modifier = Modifier
+      .fillMaxSize(),
+      )
+  }
+  Column {
+      Text(
+        text = "Welcome",
+      modifier = Modifier
+        .background(Color.Blue)
+      )
+    Button(onClick = { /*Handle click*/ },
+            shape = RoundedCornerShape(5.dp),
+      ){
+Text(
+  text = "Register"
 )
-  Text(
-    text ="Some other text",
-    color = Color.Blue,
-    fontSize = 8.sp,
-
-    )
-}
-
+    }
+  }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
   SimpleUITheme {
-    Greeting("Android")
+    Greeting("Welcome")
   }
 }
