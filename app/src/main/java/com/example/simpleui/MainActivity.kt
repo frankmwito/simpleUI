@@ -33,12 +33,14 @@ import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
 import com.example.simpleui.ui.theme.SimpleUITheme
@@ -58,27 +60,36 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-  Box{
+
+fun
+
+        Greeting(name: String, modifier: Modifier = Modifier) {
+  Box(
+    modifier = modifier.fillMaxSize(),
+    contentAlignment = Alignment.Center // Center content vertically and horizontally
+  ) {
     Image(
-      painter = painterResource(id = R.drawable.frankie),
-      contentDescription =("Background image"),
-    modifier = Modifier
-      .fillMaxSize(),
-      )
-  }
-  Column {
+      painter = painterResource(id = R.drawable.ja1),
+      contentDescription = "Background image",
+      contentScale = ContentScale.FillBounds,
+      modifier = Modifier.fillMaxSize()
+    )
+    Column(
+      horizontalAlignment = Alignment.CenterHorizontally // Center content horizontally
+    ) {
       Text(
         text = "Welcome",
-      modifier = Modifier
-        .background(Color.Blue)
+        modifier = Modifier
+          .background(Color.Transparent)
+        // .align(Alignment.CenterVertically)  // Not needed now
       )
-    Button(onClick = { /*Handle click*/ },
-            shape = RoundedCornerShape(5.dp),
-      ){
-Text(
-  text = "Register"
-)
+      Button(
+        onClick = { /*Handle click*/ },
+        shape = RoundedCornerShape(15.dp),
+        // modifier = Modifier.align(Alignment.CenterVertically) // Not needed now
+      ) {
+        Text(text = "Register")
+      }
     }
   }
 }
